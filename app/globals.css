@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --power-red: #ff0040;
+  --power-red-glow: #ff3366;
+  --power-blue: #00d9ff;
+  --power-blue-glow: #00b8ff;
+  --power-green: #00ff88;
+  --dark-base: #0a0a0f;
+  --dark-navy: #0d1117;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #0a0a0f;
+}
+
+body {
+  background-color: #0a0a0f;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Grain overlay - lightweight CSS */
+.grain-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Diagonal clip */
+.clip-diagonal {
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+.clip-diagonal-reverse {
+  clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+}
+
+/* Hide scrollbar for horizontal gallery */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Soft card shadow */
+.card-shadow {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), 0 0 40px rgba(255, 0, 64, 0.05);
+}
+
+.card-shadow-hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 60px rgba(255, 0, 64, 0.08);
+}
+
+/* Splash screen animations */
+@keyframes splash-pop-in {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes splash-move-up {
+  0% {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+  }
+  100% {
+    left: 1.5rem;
+    top: 1.25rem;
+    transform: translate(0, 0) scale(1);
+    font-size: clamp(1.5rem, 4vw, 1.875rem);
+  }
+}
