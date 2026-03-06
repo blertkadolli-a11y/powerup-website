@@ -7,12 +7,12 @@ import { AnimateOnScroll } from "./AnimateOnScroll";
 import { FigureFallback } from "./FigureFallback";
 
 const instagramGallery = [
-  { src: "/ig/1.jpg", alt: "Power Up — Post 1" },
-  { src: "/ig/2.jpg", alt: "Power Up — Post 2" },
-  { src: "/ig/3.jpg", alt: "Power Up — Post 3" },
-  { src: "/ig/4.jpg", alt: "Power Up — Post 4" },
-  { src: "/ig/5.jpg", alt: "Power Up — Post 5" },
-  { src: "/ig/6.jpg", alt: "Power Up — Post 6" },
+  { src: "/ig/1.jpg?v=1", alt: "Power Up — Post 1" },
+  { src: "/ig/2.jpg?v=2", alt: "Power Up — Post 2" },
+  { src: "/ig/3.jpg?v=3", alt: "Power Up — Post 3" },
+  { src: "/ig/4.jpg?v=4", alt: "Power Up — Post 4" },
+  { src: "/ig/6.jpg?v=6", alt: "Power Up — Post 5" },
+  { src: "/ig/5.jpg?v=5", alt: "Power Up — Post 6" },
 ];
 
 export function Instagram() {
@@ -64,10 +64,12 @@ export function Instagram() {
                     <FigureFallback className="group-hover:scale-105 transition-transform duration-500" />
                   ) : (
                     <Image
+                      key={item.src}
                       src={item.src}
                       alt={item.alt}
                       fill
                       loading="lazy"
+                      unoptimized
                       sizes="(max-width: 768px) 50vw, 33vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                       onError={() => handleError(i)}
